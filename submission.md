@@ -7,14 +7,12 @@ These notes will be read by HubSpot developers. Drop us a line!
 * I'd like to figure out a way to debounce the controlled input for the search filter - as you can't use lodash in the typical way for controlled inputs, and I didn't have time to figure out an appropriate workaround. But I think this would improve the performance of the app whilst searching a lot, as right now it's triggering a lot of unnecessary renders which could slow down the experience for users on lower-end devices.
 * I think a range slider may have been a better way to select dates than multiple checkboxes, so I would've liked to have explored that option
 * I think spending a bit more time to map out a style structure could've been better, to consider how it could fit into a wider project
-* Write unit tests and jest-axe tests; I ran into trouble with Parcel's config conflicting with React Testing Library/jest config conflicting, and I was going down a rabbit hole trying to figure out how to properly configure it
+* I would complete writing unit tests and jest-axe tests; I ran into trouble with Parcel's config conflicting with React Testing Library/jest config conflicting, and I was going down a rabbit hole trying to figure out how to properly configure it
 
 ## How did you deviate from the directions, if at all, and why?
 
-N.B I'm not sure if these points are really deviations, but I think they're appropriate to note:
-
 * For exercise 1, I changed the button color to a WCAG AA-adhering shade of blue. The color in the spec did not meet the contrast criteria
-* For exercise 1, I adjusted the design of the testimonial border on mobile devices to maximise readability on smaller screens
+* For exercise 1, I adjusted the design of the testimonial border on mobile devices to maximize readability on smaller screens
 * For exercise 2, I made filters additive. I'm not sure if this was an implied requirement, but it made sense to me that the filters should work together. The 'genre' filter is the primary filter, then 'year' filters on top of that. 
 * For exercise 2, I moved the search icon to the left. Having it on the right would indicate it's a button, and the search updates on input, so I thought it would make more sense on the left from a UX perspective
 
