@@ -12,7 +12,7 @@ const initialState = {
   searchQuery: "",
 };
 
-const init = (initialState) => initialState;
+const init = (state) => state;
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -65,6 +65,26 @@ function Library() {
     }
   }, [filterState]);
 
+  function renderContent() {
+    if(libraryData.length > 0) {
+      if(filteredLibraryData.length > 0) {
+        return (
+          <div className="library-grid" data-testid="library-content">
+          {filteredLibraryData.map((item) => (
+            <ItemCard key={item.title} data={item} />
+          ))}
+        </div>
+        );
+      }
+      return (
+        <NoResultsState />
+      );
+    } 
+    return !isLoading && (
+      <NoLibraryState action={fetchLibraryData} />
+    );
+  }
+
   return (
     <>
       <Filters
@@ -76,22 +96,7 @@ function Library() {
         dispatch={dispatch}
       />
       <main>
-        {libraryData.length > 0 ? (
-          filteredLibraryData.length > 0 ? (
-            <div className="library-grid" data-testid="library-content">
-              {filteredLibraryData.map((item) => (
-                <ItemCard key={item.title} data={item} />
-              ))}
-            </div>
-          ) : (
-            <NoResultsState />
-          )
-        ) : (
-          !isLoading && (
-            // show error state if library data is inaccessible
-            <NoLibraryState action={fetchLibraryData} />
-          )
-        )}
+        { renderContent() }
       </main>
     </>
   );
