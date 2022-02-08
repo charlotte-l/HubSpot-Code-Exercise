@@ -9,28 +9,37 @@ function Filters(props) {
     props;
 
   // calculate list of unique filters from loaded library data
-  const genreFilters =
-    libraryData.length > 0
-      ? Array.from(
-          new Set(
-            libraryData.reduce((prev, curr) => [...prev, ...curr.genre], [])
-          )
-        )
-      : [];
+  let genreFilters;
+  let yearFilters;
 
-  const yearFilters =
-    libraryData.length > 0
-      ? filterState.genre.length > 0
-        ? Array.from(new Set(filteredLibraryData.map((item) => item["year"])))
-        : Array.from(new Set(libraryData.map((item) => item["year"])))
-      : [];
+  if (libraryData.length > 0) {
+    genreFilters = Array.from(
+      new Set(libraryData.reduce((prev, curr) => [...prev, ...curr.genre], []))
+    );
+    if (filterState.genre.length > 0) {
+      yearFilters = Array.from(
+        new Set(filteredLibraryData.map((item) => item.year))
+      );
+    } else {
+      yearFilters = Array.from(new Set(libraryData.map((item) => item.year)));
+    }
+  } else {
+    genreFilters = [];
+    yearFilters = [];
+  }
 
   return (
     <header className={className}>
       <div>
         <div className="filter-dropdowns">
           <DropdownSelect
-            label="Genre"
+            label={
+              filterState.genre.length > 0
+                ? `${filterState.genre.length} genre${
+                    filterState.genre.length > 1 ? "s" : ""
+                  }`
+                : "Genre"
+            }
             filters={genreFilters}
             filterState={filterState.genre}
             onChange={(e) => {
@@ -38,7 +47,13 @@ function Filters(props) {
             }}
           />
           <DropdownSelect
-            label="Year"
+            label={
+              filterState.year?.length > 0
+                ? `${filterState.year.length} year${
+                    filterState.year.length > 1 ? "s" : ""
+                  }`
+                : "Year"
+            }
             filters={yearFilters}
             filterState={filterState.year}
             onChange={(e) => {
