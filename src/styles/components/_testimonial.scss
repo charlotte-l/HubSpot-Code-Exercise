@@ -1,0 +1,92 @@
+@use "../variables";
+@use "../utility/layout";
+@use "../utility/breakpoints";
+
+.testimonial-wrapper {
+  @include layout.push--auto();
+  max-width: clamp(90vw, 50vw, 760px);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 1.25rem; // height of quotation symbol
+    left: 12.5%;
+    height: 3px;
+    width: 75%;
+    background: variables.$brand;
+
+    @include breakpoints.sm {
+      top: 0;
+      left: calc(1.25rem + 1.5px);
+      height: 100%;
+      width: 3px;
+    }
+  }
+
+  .testimonial {
+    position: relative;
+    gap: 1.75rem;
+    font-size: 1.33rem;
+    line-height: 1.66rem;
+    padding-block-start: 3.5rem;
+    @include layout.flex-container(column, space-between, flex-start);
+
+    @include breakpoints.sm {
+      @include layout.flex-container(row, space-between, flex-start);
+      padding-inline-start: 3.5rem;
+      padding-block-start: 1.75rem;
+    }
+
+    &::before {
+      @include layout.pseudo($content: "\201C");
+      font-family: variables.$font-monserrat; // named font used for cross-browser consistent rendering
+      background: variables.$brand;
+      left: calc(50% - 1.25rem);
+      top: 0;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      border: 3px solid #fff;
+      color: #fff;
+      font-size: 3.5rem;
+      line-height: 1.25;
+      text-align: center;
+      z-index: 1;
+
+      @include breakpoints.sm {
+        left: 0;
+      }
+    }
+
+    &::after {
+      @include breakpoints.sm {
+        @include layout.pseudo();
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        background: variables.$brand;
+        left: calc(1.25rem - 3px);
+        top: calc(100% - 12px);
+      }
+    }
+  }
+
+  .testimonial-text {
+    font-family: variables.$font-stack-serif;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+  }
+
+  .testimonial-source {
+    font-size: 70%;
+    font-weight: 600;
+    display: block;
+    margin-top: 1.25rem;
+  }
+
+  .btn {
+    align-self: center;
+  }
+}

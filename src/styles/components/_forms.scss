@@ -1,0 +1,102 @@
+@use "../variables";
+@use "../utility/layout";
+@use "../utility/breakpoints";
+
+label {
+  font-weight: 600;
+}
+
+.checkbox-inline {
+  display: inline-block;
+  margin-right: 1rem;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.input-search-wrapper {
+  position: relative;
+
+  .input-search-icon {
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: variables.$placeholder;
+  }
+
+  &:focus-within .input-search-icon {
+    fill: #000;
+  }
+
+  .input-search {
+    height: 2.5rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+    border: 1px solid variables.$border;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    font-size: 1rem;
+  }
+
+  + button {
+    align-self: start;
+    margin-top: 1rem;
+
+    @include breakpoints.xs {
+      align-self: flex-end;
+      margin-top: 0;
+    }
+  }
+}
+
+.input-checkbox,
+.input-radio {
+  appearance: none;
+  display: inline-grid;
+  place-content: center;
+  font: inherit;
+  color: currentColor;
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 0.15rem solid currentColor;
+  transform: translateY(-0.075rem);
+
+  &::before {
+    @include layout.pseudo($pos: static);
+    width: 0.65rem;
+    height: 0.65rem;
+    opacity: 0;
+    box-shadow: inset 1em 1em currentColor;
+  }
+
+  &:checked::before {
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: 2px solid black;
+    outline-offset: 0px;
+  }
+}
+
+.input-checkbox {
+  border-radius: 0.15em;
+  margin: 0 0.5rem 0 0;
+
+  &::before {
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  }
+}
+
+.input-radio {
+  border-radius: 50%;
+  margin: 0 0.35rem 0 0;
+
+  &::before {
+    border-radius: 50%;
+  }
+}

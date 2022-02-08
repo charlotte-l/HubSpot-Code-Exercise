@@ -1,0 +1,28 @@
+@use "../utility/layout";
+
+.empty-state {
+  @include layout.flex-container(column, center, center);
+  @include layout.push--auto();
+  max-width: clamp(50vw, 500px, 90vw);
+  text-align: center;
+  margin-top: 3rem;
+
+  h2,
+  p,
+  .btn {
+    margin-bottom: 0;
+  }
+
+  p {
+    margin-top: 0.5rem;
+  }
+
+  .btn {
+    margin-top: 1rem;
+  }
+
+  img {
+    width: 128px;
+    height: 128px;
+  }
+}

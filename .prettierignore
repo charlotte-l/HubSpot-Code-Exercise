@@ -1,0 +1,9 @@
+# Ignore artifacts:
+.idea
+.cache
+.parcel-cache
+.DS_Store
+dist
+node_modules
+build
+coverage

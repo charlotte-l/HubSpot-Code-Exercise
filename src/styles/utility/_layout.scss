@@ -1,0 +1,53 @@
+@use "../variables";
+
+@mixin flex-container(
+  $direction: row,
+  $spacing: space-between,
+  $alignment: null
+) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $spacing;
+  align-items: $alignment;
+}
+
+@mixin push--auto {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin grid($grid-type, $args, $row-gap, $column-gap: $row-gap) {
+  display: grid;
+  #{$grid-type}: #{$args};
+  gap: $row-gap $column-gap;
+}
+
+.container {
+  max-width: 1200px;
+  min-height: 100vh;
+  @include push--auto();
+  border: 2px solid variables.$border;
+}
+
+.flex-row {
+  @include flex-container();
+}
+
+.flex-column {
+  @include flex-container(column);
+}

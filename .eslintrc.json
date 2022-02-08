@@ -1,0 +1,35 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "jest": true,
+    "node": true,
+    "es6": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+      "ecmaVersion": 7,
+      "requireConfigFile": false,
+      "sourceType": "module",
+      "babelOptions": {
+        "presets": ["@babel/preset-react"]
+      },
+      "ecmaFeatures": {
+          "jsx": true
+      }
+  },
+  "plugins": ["eslint-plugin-react"],
+  "extends": ["airbnb", "airbnb/hooks", "eslint-config-prettier"],
+  "rules": {
+    "prefer-const": "error",
+    "no-var": "error",
+    "semi": "error",
+    "arrow-parens": "error",
+    "no-undef": "error"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

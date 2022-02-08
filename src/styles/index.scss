@@ -1,0 +1,15 @@
+@use "base";
+@use "components/btn";
+@use "components/testimonial";
+@use "components/forms";
+@use "components/dropdown";
+@use "views/library";
+@use "components/empty-state";
+
+.exercise-header {
+  padding: 1rem 0;
+  margin: 2rem 0;
+  text-align: center;
+  color: #fff;
+  background-color: #00a4bd;
+}

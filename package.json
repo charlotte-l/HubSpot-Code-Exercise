@@ -3,19 +3,54 @@
   "version": "1.1.1",
   "description": "HubSpot Code Exercise",
   "scripts": {
-    "start": "parcel serve src/views/index.html --open",
-    "build": "rm -Rf dist/ && parcel build src/views/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "cross-env NODE_ENV=development parcel serve src/views/index.html --open",
+    "build": "cross-env NODE_ENV=production rm -Rf dist/ && parcel build src/views/index.html",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src && prettier --write ./src",
+    "test": "jest --watch"
   },
-  "author": "HubSpot Applicant",
+  "author": "Charlotte Cameron",
   "license": "ISC",
   "private": true,
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "dependencies": {
-    "parcel": "^2.2.1"
+    "@parcel/babel-preset-env": "^2.2.1",
+    "prop-types": "^15.8.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.16.8",
     "@babel/core": "^7.16.12",
-    "@babel/preset-env": "^7.16.11"
-  }
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "@parcel/css": "^1.2.0",
+    "@parcel/optimizer-css": "^2.2.1",
+    "@parcel/transformer-css-experimental": "^2.2.1",
+    "@parcel/transformer-sass": "^2.2.1",
+    "@testing-library/react": "^12.1.2",
+    "@types/jest": "^27.4.0",
+    "@welldone-software/why-did-you-render": "^6.2.3",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "jest": "^27.5.0",
+    "jest-axe": "^5.0.1",
+    "parcel": "^2.2.1",
+    "prettier": "^2.5.1"
+  },
+  "browserslist": [
+    "last 1 Chrome version",
+    "last 1 Firefox version",
+    "last 1 Safari version",
+    "last 1 Edge version"
+  ]
 }

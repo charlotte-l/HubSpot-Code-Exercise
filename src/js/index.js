@@ -1,3 +1,7 @@
-import '../styles/index.css';
+import "../styles/index.scss";
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./components/App";
 
-console.log('App Ready');
+const app = document.getElementById("library");
+ReactDOM.render(<App />, app);

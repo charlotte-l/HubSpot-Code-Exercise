@@ -1,0 +1,100 @@
+@use "../utility/layout";
+@use "../utility/breakpoints";
+@use "../variables";
+
+.library-header {
+  @include layout.flex-container(column);
+  gap: 1rem;
+  padding: 1rem 0.5rem 0.5rem;
+  border-bottom: 2px solid variables.$border;
+
+  .filter-dropdowns {
+    @include layout.flex-container($spacing: flex-start);
+    gap: 1rem;
+  }
+
+  .filter-toggles {
+    border-color: variables.$border;
+    border-style: solid;
+    color: variables.$text-light;
+    padding-block: 0.5rem 0.75rem;
+    padding-inline: 1rem 2rem;
+  }
+
+  @include breakpoints.xs {
+    @include layout.flex-container();
+    padding: 2rem 1rem 1rem;
+
+    .filter-dropdowns {
+      @include layout.flex-container(column);
+      gap: 0rem;
+    }
+  }
+
+  @include breakpoints.sm {
+    .filter-dropdowns {
+      @include layout.flex-container($spacing: flex-start);
+      gap: 1rem;
+    }
+  }
+}
+
+.library-grid {
+  padding: 1rem;
+
+  @include layout.grid(
+    "grid-template-columns",
+    "repeat(1, minmax(0, 1fr))",
+    3rem,
+    1.5rem
+  );
+
+  @include breakpoints.xs {
+    @include layout.grid(
+      "grid-template-columns",
+      "repeat(2, minmax(0, 1fr))",
+      3rem,
+      1.5rem
+    );
+  }
+
+  @include breakpoints.sm {
+    @include layout.grid(
+      "grid-template-columns",
+      "repeat(3, minmax(0, 1fr))",
+      3rem,
+      1.5rem
+    );
+  }
+}
+
+.poster {
+  background: variables.$placeholder;
+  aspect-ratio: 1/1.5;
+
+  img {
+    height: 100%;
+    width: 100%;
+    display: block;
+  }
+}
+
+.library-item {
+  span {
+    display: block;
+    margin-top: 0.25rem;
+
+    &:first-of-type {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.library-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.library-subtitle {
+  font-weight: 600;
+}

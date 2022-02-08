@@ -1,0 +1,60 @@
+@use "../utility/layout";
+@use "../variables";
+
+.dropdown-wrapper {
+  position: relative;
+  padding-bottom: 1.5rem;
+
+  .dropdown-menu {
+    position: absolute;
+    z-index: 99;
+    background: #ffffff;
+    color: variables.$text-light;
+    border: 1px solid variables.$border;
+    top: 3.5rem;
+    left: 0;
+    width: max-content;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-20px);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+
+    &::before {
+      @include layout.pseudo();
+      z-index: 0;
+      top: -0.75rem;
+      left: 1rem;
+      width: 0;
+      height: 0;
+      border-left: 0.75rem solid transparent;
+      border-right: 0.75rem solid transparent;
+      border-bottom: 0.75rem solid #fff;
+      filter: drop-shadow(0px -0.5px 0px variables.$border);
+    }
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-inner {
+      padding: 0.75rem 0;
+      max-height: 300px;
+      overflow: auto;
+    }
+
+    label {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0 1rem 0.5rem;
+      border-bottom: 1px solid variables.$border;
+
+      &:last-of-type {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+}

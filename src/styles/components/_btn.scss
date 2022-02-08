@@ -1,0 +1,65 @@
+@use "../variables";
+@use "../utility/layout";
+
+%button-shared {
+  all: unset;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  text-align: center;
+
+  &:focus {
+    outline: 2px solid black;
+  }
+}
+
+.btn {
+  @extend %button-shared;
+  font-size: 0.9rem;
+  line-height: 1;
+  min-width: 8.555rem;
+  color: #fff;
+  background: variables.$primary; /* Color adjusted to adhere to contrast ratio requirement */
+  border: 1px solid variables.$primary;
+  border-radius: 0.25rem;
+  padding: 1.25rem 1.75rem;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: variables.$primary-hover;
+    border: 1px solid variables.$primary-hover;
+    color: #fff;
+  }
+}
+
+.btn-link {
+  @extend %button-shared;
+  display: block;
+  color: variables.$primary;
+  text-decoration: underline;
+
+  &:hover {
+    color: variables.$primary-hover;
+  }
+}
+
+.btn-dropdown {
+  @extend %button-shared;
+  @include layout.flex-container($alignment: center);
+  background: variables.$secondary;
+  border-bottom: 3px solid variables.$secondary-hover;
+  padding: 0.5rem 1rem;
+  vertical-align: middle;
+  color: variables.$text-light;
+  font-size: 0.8rem;
+
+  .arrow {
+    margin-left: 1.5rem;
+    height: 0;
+    width: 0;
+    border: 6px solid transparent;
+    border-top-color: variables.$text-light;
+    margin-top: 8px;
+  }
+}
